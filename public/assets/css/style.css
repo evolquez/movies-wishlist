@@ -1,0 +1,2 @@
+#loading_spinner { display:none}
+body.loading .spinner { display:block !important; } 

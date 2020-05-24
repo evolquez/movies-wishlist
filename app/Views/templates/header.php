@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/style.css">
     
     <title>Movies Whishlist</title>
 </head>
@@ -21,6 +22,9 @@
       </div>
     </header>
     <main role="main">
+    
+    <input type="hidden" id="apikey" value="bf50c4bf803e0598cc44f4cbd4fe3da9">
+
     <section class="jumbotron text-center">
         <div class="container">
           <h1 class="jumbotron-heading">Movies Wishlist</h1>
@@ -31,9 +35,3 @@
           </p>
         </div>
       </section>
-
-      <div class="d-flex justify-content-center">
-  <div class="spinner-border" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div>

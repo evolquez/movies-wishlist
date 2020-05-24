@@ -4,12 +4,14 @@ class Movie extends BaseController
 {
 	public function index()
 	{
-		echo view('/templates/header', ['list' => 'moviedb']);
+        echo view('/templates/header', ['list' => 'moviedb']);
+        echo view('/movies');
         echo view('/templates/footer');
     }
     
     public function saved(){
         echo view('/templates/header', ['list' => 'saved']);
+        echo view('/movies');
         echo view('/templates/footer');
     }
 }
