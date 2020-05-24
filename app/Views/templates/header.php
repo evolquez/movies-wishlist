@@ -26,8 +26,14 @@
           <h1 class="jumbotron-heading">Movies Wishlist</h1>
           <p class="lead text-muted">Your top 10 movies</p>
           <p>
-            <a href="#" class="btn btn-primary my-2">See movies from TheMovieDb</a>
-            <a href="#" class="btn btn-secondary my-2">See saved movies</a>
+            <a href="<?php echo base_url('movie')?>" class="btn <?php echo ($list == 'moviedb') ? 'btn-primary' : 'btn-secondary'?> my-2">See movies from TheMovieDb</a>
+            <a href="<?php echo base_url('movie/saved')?>" class="btn <?php echo ($list == 'saved') ? 'btn-primary' : 'btn-secondary'?> my-2">See saved movies</a>
           </p>
         </div>
       </section>
+
+      <div class="d-flex justify-content-center">
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
