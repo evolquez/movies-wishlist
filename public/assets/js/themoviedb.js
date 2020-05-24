@@ -15,8 +15,12 @@ $(document).ready(function(){
             method: "GET",
             url: url
         }).done(function( response ) {
-            console.log('response', response);
+            //console.log('response', response);
             $('body').removeClass('loading');
+
+            let elements = setMovieContent(response.results);
+
+            $('#movie_content').append(elements.childNodes);
         }).fail(function(err){
             $('body').removeClass('loading');
         });
