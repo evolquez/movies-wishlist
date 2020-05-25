@@ -22,8 +22,19 @@ class Movie extends BaseController
         echo json_encode($response);
 
     }
+
+    public function listToJson(){
+
+        $model = new MovieModel();
+
+        $movies = $model->getMovies();
+
+        echo json_encode($movies);
+    }
+
     public function savedlist(){
         $model = new MovieModel();
+
         $movies = $model->getMovies();
         
         echo view('/templates/header', ['list' => 'saved']);
@@ -33,9 +44,12 @@ class Movie extends BaseController
 
     public function remove(int $id){
         $model = new MovieModel();
-        
+
         $model->deleteMovie($id);
         
-        return redirect('savedlist');
+        echo json_encode([
+            'removed' => true
+        ]);
+        
     }
 }

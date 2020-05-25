@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Movie::index');
 $routes->get('/savedlist', 'Movie::savedlist');
 $routes->post('/save', 'Movie::save');
+$routes->get('/listToJson', 'Movie::listToJson');
 
 $routes->add('/remove/(:num)', 'Movie::remove/$1');
 

@@ -1,20 +1,32 @@
 
-function setMovieContent(movies){
+function setMovieContent(movies, savedMovies){
     let div = document.createElement('div');
-
+    
     for(var i = 0; i < movies.length; i++){
+        
+        let isSaved = false;
+        
         let movie = movies[i];
+
+        for(var x = 0; x < savedMovies.length; x++){
+            
+            if(movie.id === parseInt(savedMovies[x]['id'])){
+                isSaved = true;
+                break;
+            }
+                    
+        }
 
         if(movie.backdrop_path == null || movie.backdrop_path == undefined)
             continue;
 
-        div.appendChild(createMovieElement(movie, i));
+        div.appendChild(createMovieElement(movie, i, isSaved));
     }
 
     return div;
 }
 
-function createMovieElement(movie, index){
+function createMovieElement(movie, index, isSaved){
     let divCol = document.createElement('div');
 
     divCol.classList.add('col-md-4');
@@ -53,10 +65,17 @@ function createMovieElement(movie, index){
     divButtons.classList.add('btn-group');
 
     let buttonView = document.createElement('button');
-    buttonView.classList.add('btn', 'btn-sm', 'btn-primary', 'event-handler');
-    buttonView.id = index;
+    if(isSaved){
+        buttonView.classList.add('btn', 'btn-sm', 'btn-outline-secondary');
+        buttonView.innerText = 'Saved';
+        buttonView.setAttribute('disabled', 'disabled');
+    }else{
+        buttonView.classList.add('btn', 'btn-sm', 'btn-primary', 'event-handler');
+        buttonView.id = index;
 
-    buttonView.innerText = 'Save';
+        buttonView.innerText = 'Save';
+    }
+    
     
     divButtons.appendChild(buttonView);
 
@@ -78,7 +97,7 @@ function createMovieElement(movie, index){
 }
 
 function getSpanLoading(){
-    
+
     let span = document.createElement('span');
     span.classList.add('spinner-border', 'spinner-border-sm');
     span.setAttribute('aria-hidden', true);

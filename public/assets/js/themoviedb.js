@@ -2,15 +2,35 @@ $(document).ready(function(){
 
     let apikey = $("#apikey").val();
     let movies = [];
+    let savedMovies = [];
 
-    loadMovies();
+    loadSavedMovies();
 
+    function loadSavedMovies(){
+
+        $('body').addClass('loading');
+
+        let url = $('#base_url').val();
+        $.ajax({
+            method: "GET",
+            url: url + '/listToJson'
+        }).done(function( response ) {
+            
+            //$('body').removeClass('loading');
+            
+            savedMovies = JSON.parse(response);
+            loadMovies();
+
+        }).fail(function(err){
+            loadMovies();
+        });
+    }
     // Load movies from the movie db server
     function loadMovies(){
         
         let url = 'https://api.themoviedb.org/3/movie/upcoming?api_key='+apikey+'&language=en-US&page=1';
 
-        $('body').addClass('loading');        
+        //$('body').addClass('loading');        
         
         $.ajax({
             method: "GET",
@@ -21,7 +41,7 @@ $(document).ready(function(){
             
             movies = response.results;
 
-            let elements = setMovieContent(movies);
+            let elements = setMovieContent(movies, savedMovies);
 
             $('#movie_content').append(elements.childNodes);
 
