@@ -31,7 +31,7 @@
           <p class="lead text-muted">Your top 10 movies</p>
           <p>
             <a href="<?php echo base_url('movie')?>" class="btn <?php echo ($list == 'moviedb') ? 'btn-primary' : 'btn-secondary'?> my-2">See movies from TheMovieDb</a>
-            <a href="<?php echo base_url('movie/saved')?>" class="btn <?php echo ($list == 'saved') ? 'btn-primary' : 'btn-secondary'?> my-2">See saved movies</a>
+            <a href="<?php echo base_url('movie/savedlist')?>" class="btn <?php echo ($list == 'saved') ? 'btn-primary' : 'btn-secondary'?> my-2">See saved movies</a>
           </p>
         </div>
       </section>

@@ -9,9 +9,9 @@ class Movie extends BaseController
         echo view('/templates/footer');
     }
     
-    public function saved(){
+    public function savedlist(){
         echo view('/templates/header', ['list' => 'saved']);
-        echo view('/movies');
+        echo view('/movies', ['movies' => array()]);
         echo view('/templates/footer');
     }
 }

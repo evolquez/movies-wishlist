@@ -8,13 +8,13 @@ function setMovieContent(movies){
         if(movie.backdrop_path == null || movie.backdrop_path == undefined)
             continue;
 
-        div.appendChild(createMovieElement(movie));
+        div.appendChild(createMovieElement(movie, i));
     }
 
     return div;
 }
 
-function createMovieElement(movie){
+function createMovieElement(movie, index){
     let divCol = document.createElement('div');
 
     divCol.classList.add('col-md-4');
@@ -33,9 +33,16 @@ function createMovieElement(movie){
     let cardBody = document.createElement('card-body');
     
     cardBody.classList.add('card-body');
+    
+    let title = document.createElement('p');
+    title.classList.add('card-text', 'title');
+    title.innerText = movie.original_title;
+
+    cardBody.appendChild(title);
+
     let summary = document.createElement('p');
     summary.classList.add('card-text');
-    summary.innerHTML = movie.overview;
+    summary.innerText = movie.overview;
     
     cardBody.appendChild(summary);
 
@@ -46,22 +53,18 @@ function createMovieElement(movie){
     divButtons.classList.add('btn-group');
 
     let buttonView = document.createElement('button');
-    buttonView.classList.add('btn', 'btn-sm', 'btn-outline-secondary');
-    buttonView.innerHTML = 'View';
+    buttonView.classList.add('btn', 'btn-sm', 'btn-primary', 'event-handler');
+    buttonView.id = index;
+
+    buttonView.innerText = 'Save';
     
     divButtons.appendChild(buttonView);
-
-    let buttonEdit = document.createElement('button');
-    buttonEdit.classList.add('btn', 'btn-sm', 'btn-outline-secondary');
-    buttonEdit.innerHTML = 'Edit';
-
-    divButtons.appendChild(buttonEdit);
 
     divBottom.appendChild(divButtons);
 
     let time = document.createElement('small');
     time.classList.add('text-muted');
-    time.innerText = '9 mins';
+    time.innerText = movie.release_date;
 
     divBottom.appendChild(time);
 
@@ -72,4 +75,8 @@ function createMovieElement(movie){
     divCol.appendChild(divCard);
 
     return divCol;
+}
+
+function getSpanLoading(){
+    return ' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
 }

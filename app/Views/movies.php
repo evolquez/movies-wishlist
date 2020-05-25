@@ -6,6 +6,20 @@
 
 <div class="album py-5 bg-light">
     <div class="container">
-        <div id="movie_content" class="row"></div>
+    
+        <div id="movie_content" class="row">
+            <?php if($list == 'saved'):?>
+                <?php if(count($movies) > 0):?>
+                <?php else:?>       
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <div class="alert alert-primary justify-content-center" role="alert">
+                            No movies saved!
+                        </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                <?php endif;?>    
+            <?php endif;?>
+        </div>
     </div>
 </div>
