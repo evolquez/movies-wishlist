@@ -24,6 +24,7 @@
     <main role="main">
     
     <input type="hidden" id="apikey" value="bf50c4bf803e0598cc44f4cbd4fe3da9">
+    <input type="hidden" id="base_url", value="<?php echo base_url()?>">
 
     <section class="jumbotron text-center">
         <div class="container">

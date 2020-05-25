@@ -34,21 +34,60 @@ $(document).ready(function(){
 
         let elementId = $(this)[0].id;
 
-        $(this).attr('disabled', 'disabled');
-        
-        let buttonDoc = document.getElementById(elementId);
-        
-        buttonDoc.innerText = 'Saving...';
-        
-        $(this).append(getSpanLoading());
-
-        setTimeout(() => {
-            buttonDoc.classList.remove('btn-primary');
-            buttonDoc.classList.add('btn-outline-secondary');
-
-            buttonDoc.innerHTML = 'Saved';
-
-        }, 4000);
+        save(elementId);
     });
 
+    function save(elementId){
+        
+        toggleButtonLoading(1, elementId);
+
+        let movie = movies[elementId];
+        let url = $('#base_url').val();
+
+        $.ajax({
+            method: "POST",
+            url: url+'/save',
+            data: JSON.stringify(movie)
+        }).done(function( response ) {
+            response = JSON.parse(response);
+            if(response.saved){
+                toggleButtonLoading(2, elementId);
+            }else{
+                toggleButtonLoading(0, elementId);
+                alert('Movie no saved!');
+            }
+
+        }).fail(function(err){
+            toggleButtonLoading(0, elementId);
+            alert('Movie no saved!');
+        });
+    }
+
+    function toggleButtonLoading(state, elementId){
+        
+        let buttonDoc = document.getElementById(elementId);
+
+        switch(state){
+            case 0:
+                
+                buttonDoc.removeAttribute('disabled');
+                buttonDoc.innerHTML = 'Save';
+
+                break;
+            case 1:
+                
+                buttonDoc.setAttribute('disabled', 'disabled');
+                buttonDoc.innerText = 'Saving...';
+                buttonDoc.appendChild(getSpanLoading());
+
+                break;
+            case 2:
+                
+                buttonDoc.classList.remove('btn-primary');
+                buttonDoc.classList.add('btn-outline-secondary');
+                buttonDoc.innerHTML = 'Saved';
+
+                break;
+        }
+    }
 });

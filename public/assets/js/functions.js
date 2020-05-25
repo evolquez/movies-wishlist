@@ -78,5 +78,10 @@ function createMovieElement(movie, index){
 }
 
 function getSpanLoading(){
-    return ' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+    
+    let span = document.createElement('span');
+    span.classList.add('spinner-border', 'spinner-border-sm');
+    span.setAttribute('aria-hidden', true);
+    
+    return span;
 }

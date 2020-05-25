@@ -32,6 +32,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Movie::index');
 $routes->get('/savedlist', 'Movie::savedlist');
+$routes->post('/save', 'Movie::save');
 
 /**
  * --------------------------------------------------------------------
