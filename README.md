@@ -6,6 +6,10 @@ Before run, the following configuration need to be set:
 - Create database called **themoviedb**.
 - Set Database configuration in **\Config\Database**.
 
+## Update project dependencies
+
+`composer update`
+
 ## Run migration to create movies table
 
 `php spark migrate`
