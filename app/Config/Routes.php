@@ -34,6 +34,8 @@ $routes->get('/', 'Movie::index');
 $routes->get('/savedlist', 'Movie::savedlist');
 $routes->post('/save', 'Movie::save');
 
+$routes->add('/remove/(:num)', 'Movie::remove/$1');
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

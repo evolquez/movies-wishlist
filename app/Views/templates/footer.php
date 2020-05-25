@@ -15,6 +15,8 @@
         <script src="/assets/js/functions.js"></script>
         <?php if($list == 'moviedb'):?>
             <script src="/assets/js/themoviedb.js"></script>
+        <?php else:?>
+            <script src="/assets/js/savedmovies.js"></script>
         <?php endif;?>
     </body>
 </html>
